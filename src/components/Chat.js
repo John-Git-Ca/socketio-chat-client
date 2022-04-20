@@ -7,7 +7,6 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 import io from 'socket.io-client';
 import Picker from 'emoji-picker-react';
 import { Smile } from 'react-feather';
-import EmojiPicker from 'emoji-picker-react';
 
 const ENDPOINT = 'https://john-socketio-chat-server.herokuapp.com/';
 let socket;
