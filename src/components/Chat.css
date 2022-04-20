@@ -1,0 +1,40 @@
+.chatarea {
+  height: 80vh;
+  min-height: 500px;
+  border-radius: 5px;
+  margin: 0px;
+  border: 1px solid black;
+  padding: 0px;
+}
+
+.infobar {
+  background-color: rgb(59, 146, 146);
+  height: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+  padding: 0px;
+  width: 100%;
+  margin: 0px;
+}
+
+.messages {
+  height: 73%;
+  width: 100%;
+  margin: 0px;
+}
+.edit {
+  height: 15%;
+  border: 1px solid black;
+  width: 100%;
+  margin: 0px;
+}
+
+.text {
+  width: 80%;
+}
+
+.sendbtn {
+  width: 20%;
+}
