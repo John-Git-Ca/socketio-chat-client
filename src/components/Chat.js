@@ -5,6 +5,9 @@ import './Chat.css';
 import Message from './Message';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import io from 'socket.io-client';
+import Picker from 'emoji-picker-react';
+import { Smile } from 'react-feather';
+import EmojiPicker from 'emoji-picker-react';
 
 const ENDPOINT = 'https://john-socketio-chat-server.herokuapp.com/';
 let socket;
@@ -14,6 +17,7 @@ const Chat = () => {
   const [users, setUsers] = useState([]);
   const [editMessage, setEditMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   useEffect(() => {
     socket = io(ENDPOINT);
@@ -46,15 +50,36 @@ const Chat = () => {
     }
   };
 
+  const onEmojiClick = (e, emojiObejct) => {
+    console.log(e);
+    console.log(emojiObejct);
+    setEditMessage(`${editMessage}${emojiObejct.emoji}`);
+  };
+
+  const toggleEmojiPicker = (e) => {
+    if (
+      e.target.id === 'btn' ||
+      e.target.id === 'btn2' ||
+      e.target.id === 'btn3'
+    ) {
+      setShowEmojiPicker(!showEmojiPicker);
+    } else if (e.target.id === 'text1' || e.target.id === 'text2') {
+      setShowEmojiPicker(false);
+    }
+  };
+
   return (
     <>
-      <Row className="justify-content-center pt-4 m-0">
+      <Row
+        className="justify-content-center pt-4 m-0"
+        onClick={(e) => toggleEmojiPicker(e)}
+      >
         <Col xs={11} sm={11} md={8} xl={6} className="chatarea">
           <Row xs={8} sm={6} className="border infobar">
             <span className="text-center">Room: {room}</span>
             <span className="text-center">
               <Link to="/">
-                <Button>X</Button>
+                <Button variant="info">X</Button>
               </Link>
             </span>
           </Row>
@@ -64,16 +89,36 @@ const Chat = () => {
             ))}
           </ScrollToBottom>
           <Row className="edit">
-            <textarea
-              className="text"
-              value={editMessage}
-              onChange={(e) => setEditMessage(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleSendMessage(e)}
-            ></textarea>
-            <Button className="sendbtn" onClick={handleSendMessage}>
-              Send
-            </Button>
+            <Col xs={1} sm={1} className="p-0 h-100 emojipicker">
+              <Button variant="" className="w-100 h-100" id="btn">
+                <Smile id="btn2" />
+              </Button>
+            </Col>
+            <Col className="p-0 h-100">
+              <textarea
+                className="text"
+                id="text1"
+                value={editMessage}
+                onChange={(e) => setEditMessage(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSendMessage(e)}
+              ></textarea>
+            </Col>
+            <Col xs={2} sm={2} className="p-0 h-100">
+              <Button
+                id="text2"
+                variant="info"
+                className="sendbtn"
+                onClick={handleSendMessage}
+              >
+                Send
+              </Button>
+            </Col>
           </Row>
+          <Col className="emojimart">
+            {showEmojiPicker && (
+              <Picker id="btn3" onEmojiClick={onEmojiClick} />
+            )}
+          </Col>
         </Col>
         <Col xs={12} sm={3} md={2}>
           <ListGroupItem>

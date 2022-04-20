@@ -20,21 +20,47 @@
 }
 
 .messages {
-  height: 73%;
+  height: 78%;
   width: 100%;
   margin: 0px;
 }
 .edit {
-  height: 15%;
-  border: 1px solid black;
+  height: 10%;
+
+  border-top: 1px solid black;
   width: 100%;
   margin: 0px;
+  text-align: center;
+}
+
+.emojipicker {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-right: 1px solid black;
 }
 
 .text {
-  width: 80%;
+  width: 100%;
+  border: none;
 }
 
 .sendbtn {
-  width: 20%;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+.emojimart {
+  position: relative;
+  transform: translateY(-120%);
+}
+
+#btn2 {
+  color: burlywood;
+}
+
+#btn2:active {
+  transform: translateY(3px);
 }
