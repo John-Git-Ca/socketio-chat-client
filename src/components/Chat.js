@@ -6,7 +6,7 @@ import Message from './Message';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import io from 'socket.io-client';
 
-const ENDPOINT = 'https://john-mern-chat-app.herokuapp.com/';
+const ENDPOINT = 'https://john-socketio-chat-server.herokuapp.com/';
 let socket;
 
 const Chat = () => {
