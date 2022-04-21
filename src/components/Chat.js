@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Button,
-  Row,
-  Col,
-  ListGroupItem,
-  Form,
-  FormControl,
-} from 'react-bootstrap';
+import { Button, Row, Col, ListGroupItem, FormControl } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import './Chat.css';
 import Message from './Message';
