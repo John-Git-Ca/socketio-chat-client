@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Row, Col, ListGroupItem } from 'react-bootstrap';
+import {
+  Button,
+  Row,
+  Col,
+  ListGroupItem,
+  Form,
+  FormControl,
+} from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import './Chat.css';
 import Message from './Message';
@@ -8,6 +15,7 @@ import io from 'socket.io-client';
 import Picker from 'emoji-picker-react';
 import { Smile } from 'react-feather';
 
+// const ENDPOINT = 'http://localhost:5000/';
 const ENDPOINT = 'https://john-socketio-chat-server.herokuapp.com/';
 let socket;
 
@@ -50,8 +58,6 @@ const Chat = () => {
   };
 
   const onEmojiClick = (e, emojiObejct) => {
-    console.log(e);
-    console.log(emojiObejct);
     setEditMessage(`${editMessage}${emojiObejct.emoji}`);
   };
 
@@ -75,12 +81,16 @@ const Chat = () => {
       >
         <Col xs={11} sm={11} md={8} xl={6} className="chatarea">
           <Row xs={8} sm={6} className="border infobar">
-            <span className="text-center">Room: {room}</span>
-            <span className="text-center">
+            <Col xs={8} sm={8} className="justify-content-start">
+              Room: <strong>{room}</strong>
+            </Col>
+            <Col>
               <Link to="/">
-                <Button variant="info">X</Button>
+                <Button variant="" className="p-0">
+                  <strong>Exit Room</strong>
+                </Button>
               </Link>
-            </span>
+            </Col>
           </Row>
           <ScrollToBottom className="messages">
             {messages.map((msg, index) => (
@@ -94,13 +104,14 @@ const Chat = () => {
               </Button>
             </Col>
             <Col className="p-0 h-100">
-              <textarea
+              <FormControl
                 className="text"
+                type="text"
                 id="text1"
                 value={editMessage}
                 onChange={(e) => setEditMessage(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSendMessage(e)}
-              ></textarea>
+              ></FormControl>
             </Col>
             <Col xs={2} sm={2} className="p-0 h-100">
               <Button
@@ -109,7 +120,7 @@ const Chat = () => {
                 className="sendbtn"
                 onClick={handleSendMessage}
               >
-                Send
+                <strong> Send</strong>
               </Button>
             </Col>
           </Row>
