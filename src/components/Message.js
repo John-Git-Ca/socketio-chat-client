@@ -7,14 +7,13 @@ const Message = ({ msg: { user, text }, name }) => {
     alignright = true;
   }
   return alignright ? (
-    <div className={alignright ? 'msgbox justfiyend' : 'msgbox'}>
-      <div className={alignright ? 'msg msg-end' : 'msg'}>{text}</div>
-      <div className="user">&lt;{user} </div>
+    <div className={'msgbox justfiyend'}>
+      <div className={'msg msg-end'}>{text}</div>
     </div>
   ) : (
-    <div className={alignright ? 'msgbox justfiyend' : 'msgbox'}>
-      <div className="user">{user} &gt; </div>
-      <div className={alignright ? 'msg msg-end' : 'msg'}>{text}</div>
+    <div className={'msgbox'}>
+      <div className="user">{user.substring(0, 1)} </div>
+      <div className={'msg msg-start'}>{text}</div>
     </div>
   );
 };

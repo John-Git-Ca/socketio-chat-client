@@ -1,62 +1,55 @@
-.chatarea {
-  height: 80vh;
-  min-height: 500px;
-  border-radius: 5px;
-  margin: 0px;
-  border: 1px solid black;
+* {
   padding: 0px;
+  margin: 0px;
+  font-size: 0.9rem;
+  background-color: inherit;
+  text-align: center;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+.chatarea {
+  min-height: 400px;
+  height: 80vh;
 }
 
 .infobar {
   background-color: rgb(59, 146, 146);
-  height: 12%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid black;
-  padding: 0px;
+  height: 10%;
   width: 100%;
   margin: 0px;
+  flex-wrap: nowrap;
 }
 
 .messages {
-  height: 78%;
+  height: 75%;
   width: 100%;
-  margin: 0px;
+  background-color: #fdfdfd;
+  box-shadow: #fdfdfd;
 }
 .edit {
-  height: 10%;
-
-  border-top: 1px solid black;
+  height: 8%;
   width: 100%;
-  margin: 0px;
-  text-align: center;
 }
 
 .emojipicker {
+  height: 7%;
   display: flex;
   justify-content: center;
-  text-align: center;
-  border-right: 1px solid black;
-}
-
-.text {
-  width: 100%;
-  height: 100%;
-  border: none;
 }
 
 .sendbtn {
   width: 100%;
   height: 100%;
-  padding: 0px;
-  margin: 0px;
 }
 
-.emojimart {
-  position: relative;
-  transform: translateY(-120%);
-}
+/* .emojimart {
+  display: inline-flex;
+  position: fixed;
+  transform: translateY(-130%);
+} */
 
 #btn2 {
   color: burlywood;

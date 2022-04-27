@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Row, Col, ListGroupItem, FormControl } from 'react-bootstrap';
+import {
+  Button,
+  Row,
+  Col,
+  ListGroupItem,
+  FormControl,
+  Container,
+} from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import './Chat.css';
 import Message from './Message';
@@ -8,8 +15,8 @@ import io from 'socket.io-client';
 import Picker from 'emoji-picker-react';
 import { Smile } from 'react-feather';
 
-// const ENDPOINT = 'http://localhost:5000/';
-const ENDPOINT = 'https://john-socketio-chat-server.herokuapp.com/';
+const ENDPOINT = 'http://localhost:5000/';
+// const ENDPOINT = 'https://john-socketio-chat-server.herokuapp.com/';
 let socket;
 
 const Chat = () => {
@@ -23,7 +30,7 @@ const Chat = () => {
     socket = io(ENDPOINT);
     socket.emit('join', { name, room }, (error) => {
       if (error) {
-        alert(error);
+        // alert(error);
       }
     });
 
@@ -67,22 +74,29 @@ const Chat = () => {
   };
 
   return (
-    <>
+    <Container>
       <Row
-        className="justify-content-center pt-4 m-0"
+        className="justify-content-center pt-4"
         onClick={(e) => toggleEmojiPicker(e)}
       >
-        <Col xs={11} sm={11} md={8} xl={6} className="chatarea">
-          <Row xs={8} sm={6} className="border infobar">
-            <Col xs={8} sm={8} className="justify-content-start">
-              Room: <strong>{room}</strong>
-            </Col>
-            <Col>
+        <Col xs={11} sm={11} md={8} xl={6} className="chatarea p-0">
+          <Row className="infobar">
+            <Col className="d-flex align-items-center justify-content-start p-0">
               <Link to="/">
-                <Button variant="" className="p-0">
-                  <strong>Exit Room</strong>
+                <Button variant="">
+                  <strong>Exit</strong>
                 </Button>
               </Link>
+            </Col>
+            <Col className="d-flex align-items-center justify-content-center p-0">
+              <Button variant="" disabled>
+                {room}
+              </Button>
+            </Col>
+            <Col className="d-flex align-items-center justify-content-end p-0">
+              <Button variant="">
+                <strong>Users</strong>
+              </Button>
             </Col>
           </Row>
           <ScrollToBottom className="messages">
@@ -90,15 +104,10 @@ const Chat = () => {
               <Message key={index} msg={msg} name={name} />
             ))}
           </ScrollToBottom>
-          <Row className="edit">
-            <Col xs={1} sm={1} className="p-0 h-100 emojipicker">
-              <Button variant="" className="w-100 h-100" id="btn">
-                <Smile id="btn2" />
-              </Button>
-            </Col>
-            <Col className="p-0 h-100">
+          <Row className="edit m-0 my-1">
+            <Col className="h-100 p-0">
               <FormControl
-                className="text"
+                className="h-100 p-0 text-start"
                 type="text"
                 id="text1"
                 value={editMessage}
@@ -106,24 +115,31 @@ const Chat = () => {
                 onKeyDown={(e) => e.key === 'Enter' && handleSendMessage(e)}
               ></FormControl>
             </Col>
-            <Col xs={2} sm={2} className="p-0 h-100">
+          </Row>
+          <Row className="m-0 d-flex justify-content-between">
+            <Col xs={1} sm={1} className="h-100 emojipicker p-0">
+              <Button variant="" className="w-100 h-100" id="btn">
+                <Smile id="btn2" />
+              </Button>
+            </Col>
+            <Col xs={2} sm={2} className="h-100 p-0">
               <Button
                 id="text2"
-                variant="info"
+                variant=""
                 className="sendbtn"
                 onClick={handleSendMessage}
               >
-                <strong> Send</strong>
+                <strong>Send</strong>
               </Button>
             </Col>
           </Row>
-          <Col className="emojimart">
-            {showEmojiPicker && (
+          {showEmojiPicker && (
+            <div className="emojimart">
               <Picker id="btn3" onEmojiClick={onEmojiClick} />
-            )}
-          </Col>
+            </div>
+          )}
         </Col>
-        <Col xs={12} sm={3} md={2}>
+        {/* <div>
           <ListGroupItem>
             <strong>User List</strong>
           </ListGroupItem>
@@ -131,9 +147,9 @@ const Chat = () => {
             users.map((user, index) => (
               <ListGroupItem key={index}>--{user.name}</ListGroupItem>
             ))}
-        </Col>
+        </div> */}
       </Row>
-    </>
+    </Container>
   );
 };
 
