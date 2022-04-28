@@ -13,10 +13,16 @@ import Message from './Message';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import io from 'socket.io-client';
 import Picker from 'emoji-picker-react';
-import { Smile } from 'react-feather';
+import {
+  BiWinkSmile,
+  BiExit,
+  BiUser,
+  BiArrowBack,
+  BiSend,
+} from 'react-icons/bi';
 
-const ENDPOINT = 'http://localhost:5000/';
-// const ENDPOINT = 'https://john-socketio-chat-server.herokuapp.com/';
+// const ENDPOINT = 'http://localhost:5000/';
+const ENDPOINT = 'https://john-socketio-chat-server.herokuapp.com/';
 let socket;
 
 const Chat = () => {
@@ -85,7 +91,7 @@ const Chat = () => {
             <Col className="d-flex align-items-center justify-content-start p-0">
               <Link to="/">
                 <Button variant="">
-                  <strong>Exit</strong>
+                  <BiExit size={20} />
                 </Button>
               </Link>
             </Col>
@@ -96,7 +102,7 @@ const Chat = () => {
             </Col>
             <Col className="d-flex align-items-center justify-content-end p-0">
               <Button variant="" onClick={() => setShowUsers(!showUsers)}>
-                <strong>{showUsers ? 'Hide' : 'Users'}</strong>
+                {showUsers ? <BiArrowBack size={20} /> : <BiUser size={20} />}
               </Button>
             </Col>
           </Row>
@@ -120,17 +126,16 @@ const Chat = () => {
           <Row className="m-0 d-flex justify-content-between">
             <Col xs={1} sm={1} className="h-100 emojipicker p-0">
               <Button variant="" className="w-100 h-100" id="btn">
-                <Smile id="btn2" />
+                <BiWinkSmile id="btn2" size={25} />
               </Button>
             </Col>
             <Col xs={2} sm={2} className="h-100 p-0">
               <Button
-                id="text2"
                 variant=""
                 className="sendbtn"
                 onClick={handleSendMessage}
               >
-                <strong>Send</strong>
+                <BiSend id="text2" size={30} />
               </Button>
             </Col>
           </Row>

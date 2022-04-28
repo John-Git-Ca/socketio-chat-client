@@ -6,8 +6,16 @@
   text-align: center;
 }
 
+.btn {
+  color: rgb(200, 190, 228);
+}
+
 .btn:hover {
   transform: scale(1.1);
+}
+.btn:focus {
+  border: none;
+  box-shadow: none;
 }
 
 .chatarea {
@@ -49,16 +57,8 @@
 .emojimart {
   display: inline-flex;
   position: absolute;
-  bottom: 5%;
+  bottom: 15%;
   left: 3px;
-}
-
-#btn2 {
-  color: burlywood;
-}
-
-#btn2:active {
-  transform: translateY(3px);
 }
 
 .users {

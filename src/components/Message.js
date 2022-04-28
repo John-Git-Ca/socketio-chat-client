@@ -6,7 +6,11 @@ const Message = ({ msg: { user, text }, name }) => {
   if (user === name.trim().toLowerCase()) {
     alignright = true;
   }
-  return alignright ? (
+  return user === 'admin' ? (
+    <div>
+      <div>{text}</div>
+    </div>
+  ) : alignright ? (
     <div className={'msgbox justfiyend'}>
       <div className={'msg msg-end'}>{text}</div>
     </div>
