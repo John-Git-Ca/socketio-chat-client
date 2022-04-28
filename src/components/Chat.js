@@ -25,6 +25,7 @@ const Chat = () => {
   const [editMessage, setEditMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [showUsers, setShowUsers] = useState(false);
 
   useEffect(() => {
     socket = io(ENDPOINT);
@@ -94,8 +95,8 @@ const Chat = () => {
               </Button>
             </Col>
             <Col className="d-flex align-items-center justify-content-end p-0">
-              <Button variant="">
-                <strong>Users</strong>
+              <Button variant="" onClick={() => setShowUsers(!showUsers)}>
+                <strong>{showUsers ? 'Hide' : 'Users'}</strong>
               </Button>
             </Col>
           </Row>
@@ -138,16 +139,15 @@ const Chat = () => {
               <Picker id="btn3" onEmojiClick={onEmojiClick} />
             </div>
           )}
+          {showUsers && (
+            <div className="users">
+              {users &&
+                users.map((user, index) => (
+                  <ListGroupItem key={index}>{user.name}</ListGroupItem>
+                ))}
+            </div>
+          )}
         </Col>
-        {/* <div>
-          <ListGroupItem>
-            <strong>User List</strong>
-          </ListGroupItem>
-          {users &&
-            users.map((user, index) => (
-              <ListGroupItem key={index}>--{user.name}</ListGroupItem>
-            ))}
-        </div> */}
       </Row>
     </Container>
   );

@@ -21,6 +21,7 @@
   word-wrap: break-word;
   max-width: 83%;
   text-align: start;
+  min-height: 30px;
 }
 
 .justfiyend {

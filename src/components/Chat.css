@@ -11,6 +11,7 @@
 }
 
 .chatarea {
+  position: relative;
   min-height: 400px;
   height: 80vh;
 }
@@ -45,11 +46,12 @@
   height: 100%;
 }
 
-/* .emojimart {
+.emojimart {
   display: inline-flex;
-  position: fixed;
-  transform: translateY(-130%);
-} */
+  position: absolute;
+  bottom: 5%;
+  left: 3px;
+}
 
 #btn2 {
   color: burlywood;
@@ -57,4 +59,11 @@
 
 #btn2:active {
   transform: translateY(3px);
+}
+
+.users {
+  position: absolute;
+  right: 0px;
+  top: 10%;
+  width: 130px;
 }
