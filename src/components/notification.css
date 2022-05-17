@@ -1,0 +1,17 @@
+.notification {
+  position: 'absolute';
+  top: 0;
+  /* padding: 3px 0px 3px 0px; */
+  border-radius: 5px;
+}
+
+.name {
+  color: hotpink;
+}
+
+.accept {
+  background-color: limegreen;
+}
+.reject {
+  background-color: red;
+}

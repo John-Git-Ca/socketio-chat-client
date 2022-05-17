@@ -61,6 +61,10 @@
   left: 3px;
 }
 
+.videoBtn:hover {
+  cursor: pointer;
+}
+
 .users {
   position: absolute;
   right: 0px;
